@@ -42,7 +42,7 @@ const getPunkData = async ({ platziPunks, tokenId}) => {
     const metadata = await responseMetadata.json();
 
     return {
-        tokenURI, 
+        tokenId, 
         attributes: {
             accessoriesType,
             clotheColor,
@@ -58,6 +58,7 @@ const getPunkData = async ({ platziPunks, tokenId}) => {
             skinColor,
             topType,
         },
+        tokenURI,
         dna, 
         owner,
         ...metadata,
