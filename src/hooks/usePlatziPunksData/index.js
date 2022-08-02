@@ -2,10 +2,18 @@ import { useCallback, useEffect, useState } from 'react';
 import usePlatziPunks from '../usePlatziPunks';
 
 const getPunkData = async ({ platziPunks, tokenId}) => {
+    console.log("==============> getPunkData:: "+tokenId);
     const [
         tokenURI,
-        dna, 
-        owner, 
+        dna,
+        owner,
+      ] = await Promise.all([
+        platziPunks.methods.tokenURI(tokenId).call(),
+        platziPunks.methods.tokenDNA(tokenId).call(),
+        platziPunks.methods.ownerOf(tokenId).call(),
+      ]);
+
+    const [
         accessoriesType,
         clotheColor,
         clotheType,
@@ -20,22 +28,19 @@ const getPunkData = async ({ platziPunks, tokenId}) => {
         skinColor,
         topType,
     ] = await Promise.all([
-        platziPunks.methods.tokenURI(tokenId).call(),
-        platziPunks.methods.tokenDNA(tokenId).call(),
-        platziPunks.methods.ownerOf(tokenId).call(),
-        platziPunks.methods.getAccesoriesType(tokenId).call(),
-        platziPunks.methods.getClotheColor(tokenId).call(),
-        platziPunks.methods.getClotheType(tokenId).call(),
-        platziPunks.methods.getEyeType(tokenId).call(),
-        platziPunks.methods.getEyeBrowType(tokenId).call(),
-        platziPunks.methods.getFacialHairColor(tokenId).call(),
-        platziPunks.methods.getFacialHairType(tokenId).call(),
-        platziPunks.methods.getHairColor(tokenId).call(),
-        platziPunks.methods.getHatColor(tokenId).call(),
-        platziPunks.methods.getGraphicType(tokenId).call(),
-        platziPunks.methods.getMouthType(tokenId).call(),
-        platziPunks.methods.getSkinColor(tokenId).call(),
-        platziPunks.methods.getTopType(tokenId).call(),
+        platziPunks.methods.getAccesoriesType(dna).call(),
+        platziPunks.methods.getClotheColor(dna).call(),
+        platziPunks.methods.getClotheType(dna).call(),
+        platziPunks.methods.getEyeType(dna).call(),
+        platziPunks.methods.getEyeBrowType(dna).call(),
+        platziPunks.methods.getFacialHairColor(dna).call(),
+        platziPunks.methods.getFacialHairType(dna).call(),
+        platziPunks.methods.getHairColor(dna).call(),
+        platziPunks.methods.getHatColor(dna).call(),
+        platziPunks.methods.getGraphicType(dna).call(),
+        platziPunks.methods.getMouthType(dna).call(),
+        platziPunks.methods.getSkinColor(dna).call(),
+        platziPunks.methods.getTopType(dna).call(),
     ]);
 
     const responseMetadata = await fetch(tokenURI);
@@ -102,4 +107,31 @@ const useAllPlatziPunksData = () => {
     }
 }
 
-export { useAllPlatziPunksData };
+const usePlatziPunkData = (tokenId = null) => {
+    const [punk, setPunk] = useState({});
+    const [loading, setLoading] = useState(true);
+    const platziPunks = usePlatziPunks();
+  
+    const update = useCallback(async () => {
+      if (platziPunks && tokenId != null) {
+        setLoading(true);
+  
+        const toSet = await getPunkData({ tokenId, platziPunks });
+        setPunk(toSet);
+  
+        setLoading(false);
+      }
+    }, [platziPunks, tokenId]);
+  
+    useEffect(() => {
+      update();
+    }, [update]);
+  
+    return {
+      loading,
+      punk,
+      update,
+    };
+  };
+
+export { useAllPlatziPunksData, usePlatziPunkData };
