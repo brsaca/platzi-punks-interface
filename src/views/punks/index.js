@@ -18,9 +18,10 @@ import { useAllPlatziPunksData } from '../../hooks/usePlatziPunksData';
 import { useState } from 'react';
 
 const Punks = () => {
-    const [address, setAddress] = useState('');
-    const [submitted, setSubmitted] = useState(false);
-    const [validAddress, setValidAddress] = useState(false);
+    const { search } = useLocation();
+    const [address, setAddress] = useState(new URLSearchParams(search).get("address"));
+    const [submitted, setSubmitted] = useState(true);
+    const [validAddress, setValidAddress] = useState(true);
     const { active, library } = useWeb3React();
     const { punks, loading } = useAllPlatziPunksData({
         owner: submitted && validAddress ? address : null,
