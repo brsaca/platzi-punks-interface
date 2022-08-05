@@ -1,6 +1,8 @@
 {
   "name": "platzi-punks-interface",
   "version": "0.1.0",
+  "email": "brsaca@gmail.com",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^1.0.15",

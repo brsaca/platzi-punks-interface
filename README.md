@@ -1,32 +1,92 @@
-# Getting Started with Platzi Punks
+# Platzi Punks Interface 👋
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+<a href="https://bafybeigpvpjruacgbc2q3pqzgmq5rkc6wl4gfc5nzcne4l6ogd4pg23sp4.ipfs.cf-ipfs.com/#/">
+<img src="images/market.png" align="center" width="70%">
+</a>
+<br><br>
+     Platzi Punks NFT MarketPlace
+    <br><br>
+  <a href="https://www.npmjs.com/package/react">
+    <img alt="npm" src="https://img.shields.io/badge/npm-8.8.0-green.svg" />
+  </a>
+  <a href="#">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-orange.svg" />
+  </a>
+  <br>
+    <br>
+    <a href="https://github.com/brenfondeadora/platzi-punks-interface/issues/new">Report bug</a>
+    ·
+    <a href="https://github.com/brenfondeadora/platzi-punks-interface/issues/new">Request feature</a>
+</p>
 
-## Available Scripts
+## 💻 Run Locally
 
-In the project directory, you can run:
+**Step 1:**
 
-### `yarn start`
+Install dependencies `yarn install`
 
-Runs the app in the development mode.\
+**Step 2:**
+
+Run the app on localhost with `yarn start`
+
+**Step 3:**
+
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Step 4:**
 
-### Upload file to IPFS
+To create build files `yarn build`
 
-Check documentation for manage files on [infura](https://docs.infura.io/infura/networks/ipfs/how-to/manage-files)
+<br>
 
+## 🤳 Requirements
+
+* [Metamask](https://metamask.io/)
+* [testnet LINK](https://faucets.chain.link/rinkeby)
+
+<br>
+
+## 🚀 Upload file to IPFS
+
+**Step 1:**
+Create Hash to upload to IPFS `sh ./deploy.sh` <br>
+
+**Step 2:**
+Copy hash created 
 ```
-➜  platzi-punks-interface git:(main) curl "https://ipfs.infura.io:5001/api/v0/add?pin=true&cid-version=1" -X POST -H "Content-Type: multipart/form-data" -F file="Bren Platzi Punks"  
-{"Name":"bafkreifd7uy5dno5wkanltwnedujy6cqm7f3jjpespzjta4t5t7n2dlfwa","Hash":"bafkreifd7uy5dno5wkanltwnedujy6cqm7f3jjpespzjta4t5t7n2dlfwa","Size":"17
+{"Name":"","Hash":"bafybeigpvpjruacgbc2q3pqzgmq5rkc6wl4gfc5nzcne4l6ogd4pg23sp4","Size":"10214721"}
+* Closing connection 0
+* TLSv1.2 (IN), TLS alert, close notify (256):
+* TLSv1.2 (OUT), TLS alert, close notify (256):
 ```
 
-### Check public gateway checker IPFS
-[https://ipfs.github.io/public-gateway-checker/]
-1. Select one hostname of the list
-2. Copy the hash and put in in the beggining to test \
-[https://bafkreifd7uy5dno5wkanltwnedujy6cqm7f3jjpespzjta4t5t7n2dlfwa.ipfs.dweb.link/#x-ipfs-companion-no-redirect]\
-[https://ipfs.io/ipfs/bafkreifd7uy5dno5wkanltwnedujy6cqm7f3jjpespzjta4t5t7n2dlfwa]
+**Step 3:**
+Use any url of the [public gateway](https://ipfs.github.io/public-gateway-checker/) and copy the hash and put in in the beggining to test
 
+[https://bafybeigpvpjruacgbc2q3pqzgmq5rkc6wl4gfc5nzcne4l6ogd4pg23sp4.ipfs.dweb.link/#/]
+[https://bafybeigpvpjruacgbc2q3pqzgmq5rkc6wl4gfc5nzcne4l6ogd4pg23sp4.ipfs.cf-ipfs.com/#/]
+
+<br>
+
+## ✨ TODO
+
+- [ ] Tests
+- [ ] Design Changes
+- [ ] Link to OpenSea
+
+<br>
+
+## 👤 Author
+
+**Brenda Saavedra**
+
+- Twitter: [@brsaca](https://twitter.com/brsaca)
+- Github: [@brenfondeadora](https://github.com/brenfondeadora/)
+
+<br>
+
+## 📝 License
+
+Copyright © 2022 [Brenda Saavedra](https://github.com/brenfondeadora).<br />
+This project is [MIT License]() (MIT)
